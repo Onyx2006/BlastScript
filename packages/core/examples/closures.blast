@@ -1,0 +1,25 @@
+// A weapon that returns a weapon: classic closure over `ammo`.
+weapon makeCounter(start: num) {
+  spawn ammo = start
+
+  weapon fire() {
+    ammo = ammo + 1
+    score ammo
+  }
+
+  score fire
+}
+
+spawn counter = makeCounter(0)
+shout(counter())   // 1
+shout(counter())   // 2
+shout(counter())   // 3
+
+weapon factorial(n: num) => num {
+  aim (n <= 1) {
+    score 1
+  }
+  score n * factorial(n - 1)
+}
+
+shout("5! =", factorial(5))
