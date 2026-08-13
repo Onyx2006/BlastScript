@@ -1,0 +1,17 @@
+{
+  "name": "blastscript-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "BlastScript: an arcade-shooter-themed programming language, its core, and its playground.",
+  "workspaces": [
+    "packages/core",
+    "packages/playground"
+  ],
+  "scripts": {
+    "build:core": "npm run build --workspace=packages/core",
+    "dev:playground": "npm run dev --workspace=packages/playground",
+    "build:playground": "npm run build --workspace=packages/playground",
+    "test:core": "npm run test --workspace=packages/core"
+  },
+  "license": "MIT"
+}
