@@ -1,5 +1,4 @@
 # BlastScript
-
 A small, ambitious programming language with an arcade shooter's
 vocabulary — `spawn`, `hit`, `score`, `loot` — plus gradual types,
 closures, recursion, and a compiler down to JavaScript. This repo has
@@ -16,7 +15,6 @@ shout("5! =", factorial(5))
 ```
 
 ## Repo layout
-
 ```mermaid
 flowchart TB
     subgraph repo["blastscript/ (npm workspaces)"]
@@ -39,7 +37,6 @@ flowchart TB
   executed on a server.
 
 ## Quick start
-
 ```bash
 npm install
 npm run test:core          # run the language's test suite (no network needed)
@@ -47,7 +44,6 @@ npm run dev:playground      # start the website at localhost:3000
 ```
 
 ## Language at a glance
-
 | Category | Keywords |
 |---|---|
 | Declarations | `spawn` (mutable), `loadout` (constant), `weapon` (function) |
@@ -61,7 +57,6 @@ keyword reference, the pipeline diagram, and how closures and control
 flow are implemented internally.
 
 ## Status
-
 This is a young, from-scratch language — expect rough edges. The
 interpreter and compiler agree on every example in
 `packages/core/examples/` and in the test suite
@@ -69,23 +64,4 @@ interpreter and compiler agree on every example in
 minimal (structural, no generics, no union types yet).
 
 ## License
-
 MIT
-
-# HITSCAN
-> A tiny, typed, closures-included programming language for people who'd
-> rather be fragging than filing bug reports.
-Status: in development — see commit history for the build log.
- 
-## What is this
-HITSCAN is a small interpreted language with a shooter-flavored vocabulary
-(`spawn`, `loadout`, `frag`, `wave`, `respawn`) sitting on top of a very
-ordinary, very real language core: a hand-written lexer, a recursive-descent
-parser, a tree-walking interpreter with lexical closures, runtime type
-checking, and a transpiler down to JavaScript.
- 
-It ships with a web playground (Next.js + Monaco) where you can write
-HITSCAN in the browser, run it, and watch the parser build your AST live.
- 
-More docs land as the project does. Full write-up coming in
-[`docs/LANGUAGE_SPEC.md`](./docs/LANGUAGE_SPEC.md).
