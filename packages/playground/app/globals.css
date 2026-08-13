@@ -1,0 +1,124 @@
+/* ---------------------------------------------------------------------
+   BlastScript playground — design tokens.
+
+   Concept: an arcade cabinet HUD, not a "dark mode SaaS landing page".
+   The tri-color accent system (hit / score / loot) mirrors the three
+   things a shooter HUD actually tracks: damage, points, drops. The
+   pixel display face is used *only* for the wordmark and eyebrows —
+   everywhere else is a monospace body face, because the whole product
+   is source code.
+   --------------------------------------------------------------------- */
+
+:root {
+  /* Color */
+  --void: #0a0c10; /* page background */
+  --panel: #12161d; /* cards, terminal chrome */
+  --panel-raised: #171c25;
+  --hairline: #232a35;
+  --hit: #ff3864; /* damage / errors / primary accent */
+  --hit-dim: #7a1c33;
+  --score: #2ee6a6; /* success / stdout / score accent */
+  --score-dim: #1a6e50;
+  --loot: #ffb238; /* highlights / rare / secondary accent */
+  --loot-dim: #7a5a1c;
+  --ink: #e8ecf1; /* primary text */
+  --fog: #6b7688; /* muted text, borders */
+  --fog-dim: #3a4150;
+
+  /* Type */
+  --font-display: "Press Start 2P", "Courier New", monospace;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Scale */
+  --radius: 3px;
+  --shadow-panel: 0 0 0 1px var(--hairline), 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--void);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(46, 230, 166, 0.08), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.012) 0px, rgba(255, 255, 255, 0.012) 1px, transparent 1px, transparent 3px);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--hit);
+  color: var(--void);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Focus visibility — kept everywhere, per accessibility floor */
+:focus-visible {
+  outline: 2px solid var(--score);
+  outline-offset: 2px;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--fog);
+  text-transform: uppercase;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+.killfeed-row {
+  animation: feed-in 260ms ease-out;
+}
+
+@keyframes feed-in {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
