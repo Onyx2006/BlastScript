@@ -21,7 +21,7 @@ export function Hero() {
 
   useEffect(() => {
     let cancelled = false;
-    let timeoutId: ReturnType<typeof setTimeout>;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
     async function playOnce() {
       setTyped("");
